@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bill Calculator</title>
+  
+</head>
+
+<body>
+        
+        <center>          
+      
+<h1>&nbsp &nbsp &nbsp &nbsp &nbsp Maitre D</h1>
+<br>
+<main>
+
+    <table class=tab>
+        <tr>
+          <td colspan="2">
+                
+                    <label for="total">Total:</label>
+                    <input id="field-total" type="text" class="field-total" value="" placeholder="0.00">
+               
+            </td>
+            
+        </tr>
+        <tr style="height: 2em"></tr>  
+<tr>
+        <td>
+                <label>Tip: <span id="tip-amount">$0.00</span></label>
+           </td>
+           <td>
+              
+                   <label for="rate">Rate: </label>
+                   <input id="field-rate" type="text" class="field-rate" value="" placeholder="0.0%" size="2" >
+               
+           </td>
+
+</tr>
+
+<tr>
+<td>
+    <label>Tax: <span id="tax-amount">$0.00</span></label>
+</td>
+</tr>
+<tr>
+    <td>
+        <label>Grand Total: <span id="total-amount">$0.00</span></label>
+    </td>
+</tr>
+    </table>
+<br><br>
+    <section>
+            &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 
+                 <button id="calculate">Calculate</button>
+        </section>
+
+</main>
+</center>
+<script>
+
+document.getElementById("calculate").addEventListener('click', calculate)
+function calculate()
+{
+    const total=Number(document.getElementById("field-total").value)
+    const taxRate=(5.5/100)*total; 
+    const rate=Number(document.getElementById("field-rate").value)
+    const tip=(rate/100)*total
+    const grandTotal=total+tip+taxRate
+    if(total>0)
+{
+    document.getElementById("tax-amount").innerHTML = taxRate
+    document.getElementById("tip-amount").innerHTML = tip
+    document.getElementById("total-amount").innerHTML = grandTotal
+}
+else{
+    showAlert();
+    function showAlert() {
+    alert ("Please enter the correct bill amount");
+  }
+}
+}
+
+</script>
+
+</body>
+
+</html>
